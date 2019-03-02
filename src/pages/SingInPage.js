@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import {Image , StyleSheet, Text, View , Dimensions , Animated , TextInput ,TouchableOpacity} from 'react-native';
 import { createStackNavigator ,createAppContainer  } from 'react-navigation';
-import card from './cardPage'
+import card from './CardPage'
 
 let deviceWidth = Dimensions.get('window').width
 let deviceHeight = Dimensions.get('window').height
 
  class SignIn extends Component{
+    static navigationOptions = {
+        headerTransparent : true
+       
+    }
     constructor(props) {
         super(props)
         this.animatedValue = new Animated.Value(0)
@@ -17,9 +21,7 @@ let deviceHeight = Dimensions.get('window').height
             
         }
     }
-
    
-
     componentDidMount () {
         this.animate()
       }
@@ -30,15 +32,11 @@ let deviceHeight = Dimensions.get('window').height
           {
             toValue: 1,
             duration: 2000,
-            // easing: Easing.linear
           }
         ).start();
 
 
       }
-
-      
-
 
     handleEmail = (text) => {
         this.setState({ email: text })
@@ -83,11 +81,6 @@ let deviceHeight = Dimensions.get('window').height
 
         return(
             <View style = {styles.container}>
-                {/* <View style = {styles.imageContainer}>
-                </View>
-                <View style = {styles.inputs}>
-                </View> */}
-                 
 
                 <View style = {styles.flexOne}>
                     <Image 
@@ -110,7 +103,7 @@ let deviceHeight = Dimensions.get('window').height
                         style = {styles.input}
                         placeholder = "Email"
                         placeholderTextColor = "#ffffff"
-                        onChangeText = {this.handleEmail}/>
+                        onChangeText = {this.handleEmail.bind(this)}/>
                    
                 </Animated.View>
 
@@ -122,7 +115,7 @@ let deviceHeight = Dimensions.get('window').height
                         style = {styles.input}
                         placeholder = "password"
                         placeholderTextColor = "#ffffff"
-                        onChangeText = {this.handlePassword}/>
+                        onChangeText = {this.handlePassword.bind(this)}/>
                     
                 </Animated.View>
 
@@ -154,14 +147,12 @@ let deviceHeight = Dimensions.get('window').height
 
 const RootStack = createStackNavigator(
     {
-        Home : SignIn,
-        Card : card 
-    },
-    {
-        headerMode: 'none',
-        navigationOptions: {
-          headerVisible: false,
-        }
+        Home: {
+            screen: SignIn,   
+        },
+        Card: {
+            screen: card, 
+        },
     },
     {
         initialRouteName : 'Home'
@@ -169,11 +160,8 @@ const RootStack = createStackNavigator(
    
 
   );
-
-
+  
 export default createAppContainer(RootStack);
-
-
 
 let styles = StyleSheet.create({ 
     container : {

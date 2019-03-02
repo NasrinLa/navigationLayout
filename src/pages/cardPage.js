@@ -1,12 +1,26 @@
 import React, {Component} from 'react';
-import {Image , StyleSheet, Text, View , Dimensions , TouchableOpacity} from 'react-native';
+import {Image , StyleSheet, Text, View , Platform , TouchableOpacity} from 'react-native';
+import Bottoms from './BottonHolder'
 
-export default class Card extends Component{
+export default class CardPage extends Component{
+    static navigationOptions = {
+        headerTintColor: 'white',
+        headerTransparent : true,
+    }
     render(){
         return(
-            <View style = {{flex :1 , backgroundColor : 'blue'}}>
-
+            <View style = {styles.container}>
+                <Bottoms/>
             </View>
         )
     }
 }
+
+
+
+let styles = StyleSheet.create({ 
+    container : {
+        flex : 1,
+        backgroundColor : '#206bec',
+    },
+})
