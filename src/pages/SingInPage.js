@@ -58,14 +58,14 @@ let deviceHeight = Dimensions.get('window').height
             inputRange: [0, 0.5, 1],
             outputRange: [300, -300, 0]
           })
-
+          const translateX1 = this.animatedValue.interpolate({
+            inputRange: [0, 0.5, 1],
+            outputRange: [ 300, -300, 0]
+          })
           const translateX = this.animatedValue.interpolate({
             inputRange: [0, 0.5, 1],
             outputRange: [-300, 300, 0]
           })
-
-         
-
         const translateY = this.animatedValue.interpolate({
             inputRange: [0, 0.5, 1],
             outputRange: [-300, 300, 0]
@@ -107,7 +107,7 @@ let deviceHeight = Dimensions.get('window').height
                    
                 </Animated.View>
 
-                <Animated.View  style = {[styles.rowStyle , { marginLeft : movingMargin}]}>
+                <Animated.View  style = {[styles.rowStyle , {transform: [{translateX}] }]}>
                     <Image
                       source = {require('../accest/lock.png')}
                       style = {styles.iconImage} />
@@ -123,7 +123,8 @@ let deviceHeight = Dimensions.get('window').height
                 
                 <TouchableOpacity 
                 style = {[styles.singInBotton  ,{ transform: [{rotateX}]}] }
-                onPress={() => { this.changeColor() }}>
+                // onPress={() => { this.changeColor() }}
+                >
                     <Animated.Text style = {[styles.singInText  ,{ transform: [{rotateX}]}]}>SignIn</Animated.Text>
 
                 </TouchableOpacity>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Image , StyleSheet, Text, View , Platform , TouchableOpacity} from 'react-native';
-import Bottoms from './BottonHolder'
+import Bottoms from '../components/BottonHolder'
 
 export default class CardPage extends Component{
     static navigationOptions = {
